@@ -220,7 +220,7 @@ resource "aws_ecs_task_definition" "im_example_ecs" {
             containerPort = 80
             hostPort      = 80
         }]
-        command = ["/bin/sh", "-c", "echo '<h1>Hello from ECS!</h1>' > /usr/share/nginx/html/index.html && nginx -g 'daemon off;'"]
+    command = ["/bin/sh", "-c", "echo \"<h1>Hello from ECS! $(hostname) $(pwd)</h1>\" > /usr/share/nginx/html/index.html && nginx -g 'daemon off;'"]
         logConfiguration = {
           logDriver = "awslogs"
           options = {
